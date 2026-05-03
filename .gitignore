@@ -1,0 +1,33 @@
+# === Python (Streamlit/Flask) ===
+# Pastas de ambiente virtual
+venv/
+.venv/
+
+# Cache
+__pycache__/
+*.pyc
+
+# Arquivos sensíveis
+.env
+
+# === Unity (O MAIS IMPORTANTE) ===
+# Pastas geradas automaticamente (gigantes)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Arquivos de usuário (IDE)
+*.suo
+*.user
+*.userprefs
+.vs/
+.vscode/
+
+# Arquivos gerados pelo Unity
+*.unityproj
+*.sln
+*.csproj
