@@ -14,8 +14,8 @@ function TelaLogin({ onLogin }) {
   };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f4f4f9', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', width: '380px', textAlign: 'center', border: '1px solid #ecf0f1' }}>
+    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f4f4f9', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+      <div style={{ backgroundColor: 'white', padding: '40px', borderRadius: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', width: '100%', maxWidth: '380px', textAlign: 'center', border: '1px solid #ecf0f1' }}>
         <div style={{ backgroundColor: '#ebf5fb', width: '100px', height: '100px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto' }}>
           <ShowerHead size={50} color="#3498db" />
         </div>
@@ -27,20 +27,13 @@ function TelaLogin({ onLogin }) {
             type="email" placeholder="Seu E-mail (ex: upx@facens.br)" required
             value={email} onChange={(e) => setEmail(e.target.value)}
             style={{ padding: '15px', borderRadius: '10px', border: '2px solid #bdc3c7', fontSize: '1.1rem', transition: '0.2s', outline: 'none' }}
-            onFocus={(e) => e.target.style.borderColor = '#3498db'}
-            onBlur={(e) => e.target.style.borderColor = '#bdc3c7'}
           />
           <input 
             type="password" placeholder="Sua Senha" required
             value={senha} onChange={(e) => setSenha(e.target.value)}
             style={{ padding: '15px', borderRadius: '10px', border: '2px solid #bdc3c7', fontSize: '1.1rem', transition: '0.2s', outline: 'none' }}
-            onFocus={(e) => e.target.style.borderColor = '#3498db'}
-            onBlur={(e) => e.target.style.borderColor = '#bdc3c7'}
           />
-          <button type="submit" style={{ backgroundColor: '#3498db', color: 'white', padding: '15px', border: 'none', borderRadius: '10px', fontSize: '1.2rem', cursor: 'pointer', fontWeight: 'bold', transition: '0.2s', boxShadow: '0 4px 6px rgba(52, 152, 219, 0.2)' }}
-            onMouseOver={(e) => e.target.style.backgroundColor = '#2980b9'}
-            onMouseOut={(e) => e.target.style.backgroundColor = '#3498db'}
-          >
+          <button type="submit" style={{ backgroundColor: '#3498db', color: 'white', padding: '15px', border: 'none', borderRadius: '10px', fontSize: '1.2rem', cursor: 'pointer', fontWeight: 'bold' }}>
             Entrar no Painel
           </button>
         </form>
@@ -49,7 +42,7 @@ function TelaLogin({ onLogin }) {
   );
 }
 
-// --- COMPONENTE: Dashboard (VOLTOU AO ESTILO COMPACTO ORIGINAL) ---
+// --- COMPONENTE: Dashboard ---
 function TelaDashboard({ tarifaKwh, tarifaAgua }) {
   const [status, setStatus] = useState('Ligado');
   const [tempoBanho, setTempoBanho] = useState(0); 
@@ -96,9 +89,9 @@ function TelaDashboard({ tarifaKwh, tarifaAgua }) {
 
   return (
     <div style={{ animation: 'fadeIn 0.5s' }}>
-      <header style={{ marginBottom: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <header style={{ marginBottom: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
         <div>
-          <h2 style={{ color: '#2c3e50', margin: 0 }}>Monitoramento em Tempo Real 🚿⚡</h2>
+          <h2 style={{ color: '#2c3e50', margin: 0, fontSize: '1.5rem' }}>Em Tempo Real 🚿⚡</h2>
           <p style={{ color: '#7f8c8d', margin: 0 }}>Acompanhe o banho atual</p>
         </div>
         <div style={{ textAlign: 'right' }}>
@@ -107,32 +100,31 @@ function TelaDashboard({ tarifaKwh, tarifaAgua }) {
         </div>
       </header>
 
-      {/* Cards Originais (3 em uma linha só) */}
       <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '30px' }}>
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #f1c40f', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ color: '#f39c12', marginTop: 0, display: 'flex', alignItems: 'center', gap: '5px' }}><Zap size={20}/> Potência Atual</h3>
+        <div className="card-responsivo" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #f1c40f', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ color: '#f39c12', marginTop: 0, display: 'flex', alignItems: 'center', gap: '5px' }}><Zap size={20}/> Potência</h3>
           <p style={{ fontSize: '2rem', fontWeight: 'bold', margin: '10px 0', color: '#2c3e50' }}>{energiaAtual} <span style={{ fontSize: '1rem', color: '#95a5a6' }}>W</span></p>
         </div>
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #3498db', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ color: '#2980b9', marginTop: 0, display: 'flex', alignItems: 'center', gap: '5px' }}><Droplet size={20}/> Vazão Atual</h3>
+        <div className="card-responsivo" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #3498db', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ color: '#2980b9', marginTop: 0, display: 'flex', alignItems: 'center', gap: '5px' }}><Droplet size={20}/> Vazão</h3>
           <p style={{ fontSize: '2rem', fontWeight: 'bold', margin: '10px 0', color: '#2c3e50' }}>{aguaAtual} <span style={{ fontSize: '1rem', color: '#95a5a6' }}>L/min</span></p>
         </div>
-        <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #e74c3c', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ color: '#e74c3c', marginTop: 0 }}>Custo Deste Banho</h3>
+        <div className="card-responsivo" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #e74c3c', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
+          <h3 style={{ color: '#e74c3c', marginTop: 0 }}>Custo Atual</h3>
           <p style={{ fontSize: '2rem', fontWeight: 'bold', margin: '10px 0', color: '#2c3e50' }}>R$ {(gastoEnergia + gastoAgua).toFixed(4)}</p>
         </div>
       </div>
 
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', height: '350px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ color: '#2c3e50', marginTop: 0, marginBottom: '20px' }}>Histórico (Últimos 15s)</h3>
+        <h3 style={{ color: '#2c3e50', marginTop: 0, marginBottom: '20px', fontSize: '1.1rem' }}>Histórico (Últimos 15s)</h3>
         <ResponsiveContainer width="100%" height="80%">
-          <LineChart data={historico} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <LineChart data={historico} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#ecf0f1" />
-            <XAxis dataKey="tempo" />
-            <YAxis yAxisId="esquerda" stroke="#f1c40f" domain={['auto', 'auto']} />
-            <YAxis yAxisId="direita" orientation="right" stroke="#3498db" domain={['auto', 'auto']} />
+            <XAxis dataKey="tempo" style={{fontSize: '0.8rem'}} />
+            <YAxis yAxisId="esquerda" stroke="#f1c40f" domain={['auto', 'auto']} style={{fontSize: '0.8rem'}} />
+            <YAxis yAxisId="direita" orientation="right" stroke="#3498db" domain={['auto', 'auto']} style={{fontSize: '0.8rem'}} />
             <Tooltip />
-            <Legend />
+            <Legend wrapperStyle={{paddingTop: '10px'}} />
             <Line yAxisId="esquerda" type="monotone" dataKey="Watts" stroke="#f1c40f" strokeWidth={3} isAnimationActive={false} />
             <Line yAxisId="direita" type="monotone" dataKey="Litros" stroke="#3498db" strokeWidth={3} isAnimationActive={false} />
           </LineChart>
@@ -142,9 +134,8 @@ function TelaDashboard({ tarifaKwh, tarifaAgua }) {
   );
 }
 
-// --- COMPONENTE: Histórico Mensal (AGORA SIM, COM A SEPARAÇÃO DE GASTOS!) ---
+// --- COMPONENTE: Histórico Mensal ---
 function TelaMensal() {
-  // Dados mensais separados por Energia e Água
   const dadosMensais = [
     { mes: 'Jan', Energia: 15.50, Agua: 30.00 },
     { mes: 'Fev', Energia: 18.30, Agua: 34.00 },
@@ -155,54 +146,45 @@ function TelaMensal() {
 
   const estiloCard = {
     backgroundColor: 'white', padding: '20px', borderRadius: '15px', 
-    flex: 1, minWidth: '150px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', 
+    flex: 1, minWidth: '140px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', 
     border: '1px solid #ecf0f1'
   };
 
   return (
     <div style={{ animation: 'fadeIn 0.5s' }}>
       <header style={{ marginBottom: '35px' }}>
-        <h2 style={{ color: '#2c3e50', margin: 0, fontSize: '1.8rem' }}>Relatório do Mês Atual 📅</h2>
-        <p style={{ color: '#7f8c8d', margin: 0, fontSize: '1.1rem' }}>Desdobramento dos custos do chuveiro em Maio</p>
+        <h2 style={{ color: '#2c3e50', margin: 0, fontSize: '1.5rem' }}>Mês Atual 📅</h2>
+        <p style={{ color: '#7f8c8d', margin: 0, fontSize: '1rem' }}>Desdobramento dos custos em Maio</p>
       </header>
 
-      {/* Cards de Gasto Separados */}
-      <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '30px' }}>
-        
-        <div style={{ ...estiloCard, borderTop: '5px solid #f1c40f' }}>
-          <h3 style={{ color: '#f39c12', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '1rem' }}><Zap size={18}/> Gasto Energia</h3>
-          <p style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: 0, color: '#2c3e50' }}><span style={{fontSize: '1.2rem', color: '#95a5a6'}}>R$</span> 8,40</p>
+      <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '30px' }}>
+        <div className="card-responsivo" style={{ ...estiloCard, borderTop: '5px solid #f1c40f' }}>
+          <h3 style={{ color: '#f39c12', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.9rem' }}><Zap size={16}/> Energia</h3>
+          <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0, color: '#2c3e50' }}>R$ 8,40</p>
         </div>
-
-        <div style={{ ...estiloCard, borderTop: '5px solid #3498db' }}>
-          <h3 style={{ color: '#2980b9', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '1rem' }}><Droplet size={18}/> Gasto Água</h3>
-          <p style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: 0, color: '#2c3e50' }}><span style={{fontSize: '1.2rem', color: '#95a5a6'}}>R$</span> 17,00</p>
+        <div className="card-responsivo" style={{ ...estiloCard, borderTop: '5px solid #3498db' }}>
+          <h3 style={{ color: '#2980b9', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.9rem' }}><Droplet size={16}/> Água</h3>
+          <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0, color: '#2c3e50' }}>R$ 17,00</p>
         </div>
-
-        <div style={{ ...estiloCard, borderTop: '5px solid #2c3e50' }}>
-          <h3 style={{ color: '#2c3e50', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '1rem' }}><Coins size={18}/> Total Acumulado</h3>
-          <p style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: 0, color: '#2c3e50' }}><span style={{fontSize: '1.2rem', color: '#95a5a6'}}>R$</span> 25,40</p>
+        <div className="card-responsivo" style={{ ...estiloCard, borderTop: '5px solid #2c3e50' }}>
+          <h3 style={{ color: '#2c3e50', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.9rem' }}><Coins size={16}/> Acumulado</h3>
+          <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0, color: '#2c3e50' }}>R$ 25,40</p>
         </div>
-
-        <div style={{ ...estiloCard, backgroundColor: '#fdfefe', borderTop: '5px solid #27ae60' }}>
-          <h3 style={{ color: '#27ae60', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '1rem' }}><TrendingUp size={18}/> Projeção Final</h3>
-          <p style={{ fontSize: '2.2rem', fontWeight: 'bold', margin: 0, color: '#27ae60' }}><span style={{fontSize: '1.2rem'}}>R$</span> 58,90</p>
+        <div className="card-responsivo" style={{ ...estiloCard, backgroundColor: '#fdfefe', borderTop: '5px solid #27ae60' }}>
+          <h3 style={{ color: '#27ae60', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.9rem' }}><TrendingUp size={16}/> Projeção</h3>
+          <p style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0, color: '#27ae60' }}>R$ 58,90</p>
         </div>
-
       </div>
 
-      {/* Gráfico de Barras Lado a Lado (Energia vs Água) */}
-      <div style={{ backgroundColor: 'white', padding: '25px', borderRadius: '18px', height: '400px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', border: '1px solid #ecf0f1' }}>
-        <h3 style={{ color: '#2c3e50', marginTop: 0, marginBottom: '20px', fontSize: '1.2rem' }}>Comparativo por Mês (Energia vs Água)</h3>
+      <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', height: '350px', boxShadow: '0 4px 12px rgba(0,0,0,0.03)', border: '1px solid #ecf0f1' }}>
+        <h3 style={{ color: '#2c3e50', marginTop: 0, marginBottom: '20px', fontSize: '1.1rem' }}>Comparativo por Mês (R$)</h3>
         <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={dadosMensais} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <BarChart data={dadosMensais} margin={{ top: 20, right: 0, left: -20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#ecf0f1" vertical={false} />
-            <XAxis dataKey="mes" stroke="#95a5a6" style={{fontSize: '0.9rem'}} />
-            <YAxis stroke="#95a5a6" style={{fontSize: '0.9rem'}} />
-            <Tooltip cursor={{fill: '#f4f6f7'}} contentStyle={{ borderRadius: '10px', border: 'none', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }} />
+            <XAxis dataKey="mes" stroke="#95a5a6" style={{fontSize: '0.8rem'}} />
+            <YAxis stroke="#95a5a6" style={{fontSize: '0.8rem'}} />
+            <Tooltip cursor={{fill: '#f4f6f7'}} />
             <Legend wrapperStyle={{paddingTop: '10px'}} />
-            
-            {/* Barras Lado a Lado */}
             <Bar dataKey="Energia" fill="#f1c40f" radius={[4, 4, 0, 0]} />
             <Bar dataKey="Agua" fill="#3498db" radius={[4, 4, 0, 0]} />
           </BarChart>
@@ -215,60 +197,54 @@ function TelaMensal() {
 // --- COMPONENTE: Conta ---
 function TelaConta({ tarifaKwh, setTarifaKwh, tarifaAgua, setTarifaAgua }) {
   const estiloInput = {
-    padding: '15px', width: '100%', borderRadius: '10px', 
-    border: '2px solid #bdc3c7', fontSize: '1.2rem', transition: '0.3s', 
+    padding: '12px', width: '100%', borderRadius: '10px', 
+    border: '2px solid #bdc3c7', fontSize: '1.1rem', transition: '0.3s', 
     outline: 'none', fontWeight: 'bold', color: '#2c3e50'
   };
 
   return (
     <div style={{ animation: 'fadeIn 0.5s' }}>
       <header style={{ marginBottom: '35px' }}>
-        <h2 style={{ color: '#2c3e50', margin: 0, fontSize: '1.8rem' }}>Minha Conta 👤</h2>
-        <p style={{ color: '#7f8c8d', margin: 0, fontSize: '1.1rem' }}>Gerencie seus dados e atualize as tarifas locais</p>
+        <h2 style={{ color: '#2c3e50', margin: 0, fontSize: '1.5rem' }}>Minha Conta 👤</h2>
+        <p style={{ color: '#7f8c8d', margin: 0, fontSize: '1rem' }}>Gerencie suas tarifas locais</p>
       </header>
 
-      <div style={{ backgroundColor: 'white', padding: '35px', borderRadius: '20px', maxWidth: '650px', boxShadow: '0 10px 25px rgba(0,0,0,0.02)', border: '1px solid #ecf0f1' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '25px', marginBottom: '35px', paddingBottom: '25px', borderBottom: '2px solid #ecf0f1' }}>
-          <div style={{ width: '100px', height: '100px', backgroundColor: '#3498db', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <User size={50} color="white" />
+      <div style={{ backgroundColor: 'white', padding: '25px', borderRadius: '20px', maxWidth: '650px', boxShadow: '0 10px 25px rgba(0,0,0,0.02)', border: '1px solid #ecf0f1' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '25px', paddingBottom: '25px', borderBottom: '2px solid #ecf0f1' }}>
+          <div style={{ width: '80px', height: '80px', backgroundColor: '#3498db', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <User size={40} color="white" />
           </div>
           <div>
-            <h3 style={{ margin: 0, color: '#2c3e50', fontSize: '1.8rem' }}>Usuário UPx</h3>
-            <p style={{ margin: '5px 0 0 0', color: '#7f8c8d', fontSize: '1.1rem' }}>upx@facens.br</p>
+            <h3 style={{ margin: 0, color: '#2c3e50', fontSize: '1.5rem' }}>Usuário UPx</h3>
+            <p style={{ margin: '5px 0 0 0', color: '#7f8c8d', fontSize: '1rem', wordBreak: 'break-all' }}>upx@facens.br</p>
           </div>
         </div>
 
-        <h3 style={{ color: '#2c3e50', marginBottom: '10px', fontSize: '1.3rem' }}>Configurações de Tarifa da Região</h3>
-        <p style={{ color: '#7f8c8d', fontSize: '1rem', marginBottom: '25px' }}>
-          Atualize os valores abaixo baseados na sua conta de energia/água. Eles mudarão o cálculo na tela de monitoramento em tempo real instantaneamente.
+        <h3 style={{ color: '#2c3e50', marginBottom: '10px', fontSize: '1.2rem' }}>Configurações de Tarifa</h3>
+        <p style={{ color: '#7f8c8d', fontSize: '0.9rem', marginBottom: '25px' }}>
+          Atualize os valores abaixo baseados na sua conta. Eles mudarão o cálculo em tempo real instantaneamente.
         </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#2c3e50', fontWeight: '600', marginBottom: '10px', fontSize: '1rem' }}>
-              <Zap size={20} color="#f39c12"/> Preço do kWh de Energia (R$)
+              <Zap size={18} color="#f39c12"/> Preço do kWh (R$)
             </label>
             <input 
-              type="number" step="0.01" min="0"
-              value={tarifaKwh} 
+              type="number" step="0.01" min="0" value={tarifaKwh} 
               onChange={(e) => setTarifaKwh(Number(e.target.value))}
               style={estiloInput} 
-              onFocus={(e) => e.target.style.borderColor = '#f1c40f'}
-              onBlur={(e) => e.target.style.borderColor = '#bdc3c7'}
             />
           </div>
 
           <div>
             <label style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#2c3e50', fontWeight: '600', marginBottom: '10px', fontSize: '1rem' }}>
-              <Droplet size={20} color="#3498db"/> Preço do m³ de Água (R$)
+              <Droplet size={18} color="#3498db"/> Preço do m³ (R$)
             </label>
             <input 
-              type="number" step="0.01" min="0"
-              value={tarifaAgua} 
+              type="number" step="0.01" min="0" value={tarifaAgua} 
               onChange={(e) => setTarifaAgua(Number(e.target.value))}
               style={estiloInput} 
-              onFocus={(e) => e.target.style.borderColor = '#3498db'}
-              onBlur={(e) => e.target.style.borderColor = '#bdc3c7'}
             />
           </div>
         </div>
@@ -291,49 +267,60 @@ function App() {
   }
 
   const getEstiloBotao = (tela) => ({
-    display: 'flex', alignItems: 'center', gap: '12px', width: '100%', padding: '15px 20px', 
+    display: 'flex', alignItems: 'center', gap: '12px', padding: '15px', 
     backgroundColor: telaAtiva === tela ? '#3e5871' : 'transparent',
     color: telaAtiva === tela ? 'white' : '#bdc3c7',
-    border: 'none', borderRadius: '12px', cursor: 'pointer', fontSize: '1.1rem',
-    textAlign: 'left', transition: '0.2s', marginBottom: '8px', fontWeight: telaAtiva === tela ? 'bold' : '500'
+    border: 'none', borderRadius: '12px', cursor: 'pointer', fontSize: '1rem',
+    textAlign: 'left', transition: '0.2s', fontWeight: telaAtiva === tela ? 'bold' : '500'
   });
 
   return (
-    <div style={{ display: 'flex', height: '100vh', width: '100vw', backgroundColor: '#f4f4f9', fontFamily: 'sans-serif', overflow: 'hidden' }}>
+    <div className="app-container">
       
-      {/* Menu Lateral */}
-      <aside style={{ width: '280px', backgroundColor: '#2c3e50', padding: '30px', display: 'flex', flexDirection: 'column', color: 'white', flexShrink: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '50px', padding: '10px' }}>
-          <ShowerHead size={35} color="#3498db" />
-          <h2 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800' }}>FluxyEnergy </h2>
+      {/* Menu Lateral / Topo no Mobile */}
+      <aside className="sidebar">
+        <div className="sidebar-header" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '40px' }}>
+          <ShowerHead size={30} color="#3498db" />
+          <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '800' }}>FluxyEnergy</h2>
         </div>
 
-        <nav style={{ flex: 1 }}>
+        <nav className="sidebar-nav">
           <button style={getEstiloBotao('dashboard')} onClick={() => setTelaAtiva('dashboard')}>
-            <LayoutDashboard size={22} /> Banho Ativo
+            <LayoutDashboard size={22} /> <span className="hide-mobile">Banho Ativo</span>
           </button>
           <button style={getEstiloBotao('mensal')} onClick={() => setTelaAtiva('mensal')}>
-            <CalendarDays size={22} /> Mês Atual
+            <CalendarDays size={22} /> <span className="hide-mobile">Mês Atual</span>
           </button>
           <button style={getEstiloBotao('conta')} onClick={() => setTelaAtiva('conta')}>
-            <User size={22} /> Minha Conta
+            <User size={22} /> <span className="hide-mobile">Minha Conta</span>
+          </button>
+          
+          {/* Botão de Sair embutido na navegação no mobile */}
+          <button 
+            className="hide-desktop"
+            onClick={() => setLogado(false)}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '15px', backgroundColor: '#c0392b', color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', fontSize: '1rem', fontWeight: 'bold' }}
+          >
+            <LogOut size={22} /> 
           </button>
         </nav>
 
-        <div style={{ borderTop: '2px solid #3e5871', paddingTop: '20px', marginTop: '20px' }}>
-            
+        {/* Perfil e Sair (Escondidos no celular para economizar espaço) */}
+        <div className="hide-mobile" style={{ borderTop: '2px solid #3e5871', paddingTop: '20px', marginTop: 'auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px', color: '#bdc3c7' }}>
+                <User size={20} />
+                <span>upx@facens.br</span>
+            </div>
             <button 
                 onClick={() => setLogado(false)}
-                style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '15px', backgroundColor: '#c0392b', color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', fontSize: '1.1rem', width: '100%', fontWeight: 'bold', transition: '0.2s' }}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#e74c3c'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#c0392b'}
+                style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '15px', backgroundColor: '#c0392b', color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', fontSize: '1rem', width: '100%', fontWeight: 'bold' }}
             >
                 <LogOut size={22} /> Sair do Sistema
             </button>
         </div>
       </aside>
 
-      <main style={{ flex: 1, padding: '40px 60px', overflowY: 'auto' }}>
+      <main className="main-content">
         {telaAtiva === 'dashboard' && <TelaDashboard tarifaKwh={tarifaKwh} tarifaAgua={tarifaAgua} />}
         {telaAtiva === 'mensal' && <TelaMensal />}
         {telaAtiva === 'conta' && <TelaConta tarifaKwh={tarifaKwh} setTarifaKwh={setTarifaKwh} tarifaAgua={tarifaAgua} setTarifaAgua={setTarifaAgua} />}
