@@ -88,14 +88,18 @@ public class PlayerMovement : MonoBehaviour
 
     void TryInteract()
     {
-        RaycastHit hit; 
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, interactionDistance))
-        {
-            EnviarDados button = hit.collider.GetComponent<EnviarDados>();
-            if (button != null)
-            {
-                button.ToggleState(); 
-            }
-        }
+        RaycastHit hit;
+        if (!Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, interactionDistance))
+            return;
+
+        // Funciona com qualquer script que exponha ToggleState():
+        //   - EnviarDados          (esfera antiga / interruptor genérico)
+        //   - ChuveiroController   (chuveiro com modos verão/inverno)
+        //   - BotaoModoChuveiro    (botões de parede Verão/Inverno)
+        // SendMessage chama o método em qualquer componente do objeto que tenha,
+        // sem reclamar quando ninguém atende.
+        hit.collider.SendMessage(
+            "ToggleState",
+            SendMessageOptions.DontRequireReceiver);
     }
 }
