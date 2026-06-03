@@ -159,19 +159,22 @@ function TelaDashboard({ tarifaKwh, tarifaAgua }) {
         </div>
       </header>
 
-      {/* Badge de status */}
-      <div style={{ marginBottom: '20px' }}>
-        <span style={{
-          display: 'inline-flex', alignItems: 'center', gap: '8px',
-          padding: '6px 14px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold',
-          backgroundColor: ligado ? '#eafaf1' : '#fdecea',
-          color: ligado ? '#27ae60' : '#e74c3c',
-          border: `1px solid ${ligado ? '#27ae60' : '#e74c3c'}`
-        }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: ligado ? '#27ae60' : '#e74c3c', display: 'inline-block' }} />
-          {ligado ? 'Chuveiro Ligado (dados do Unity)' : 'Aguardando dados do Unity...'}
-        </span>
-      </div>
+      {/* Badge de status corrigido */}
+<div style={{ marginBottom: '20px' }}>
+  <span style={{
+    display: 'inline-flex', alignItems: 'center', gap: '8px',
+    padding: '6px 14px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 'bold',
+    backgroundColor: ligado ? '#eafaf1' : '#fdecea',
+    color: ligado ? '#27ae60' : '#e74c3c',
+    border: `1px solid ${ligado ? '#27ae60' : '#e74c3c'}`
+  }}>
+    <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: ligado ? '#27ae60' : '#e74c3c', display: 'inline-block' }} />
+    
+    {/* ADICIONE A CHAMADA DA FUNÇÃO AQUI: */}
+    {obterTextoStatus()}
+    
+  </span>
+</div>
 
       <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '30px' }}>
         <div className="card-responsivo" style={{ backgroundColor: 'white', padding: '20px', borderRadius: '15px', flex: 1, borderTop: '5px solid #f1c40f', minWidth: '200px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }}>
