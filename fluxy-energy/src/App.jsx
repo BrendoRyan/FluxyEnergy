@@ -135,7 +135,17 @@ function TelaDashboard({ tarifaKwh, tarifaAgua }) {
     const seg = (segundos % 60).toString().padStart(2, '0');
     return `${min}:${seg}`;
   };
-
+  
+  // ── Lógica para determinar o modo de temperatura ────────────────
+  const obterTextoStatus = () => {
+    if (!ligado) return 'Aguardando dados do Unity...';
+    // Se a potência for maior que 4000W, assume modo Inverno, senão Verão.
+    // Altere o valor de 4000 de acordo com as potências enviadas pelo Unity.
+    return energiaAtual > 4000 
+      ? `Chuveiro Ligado (Modo Inverno ❄️)` 
+      : `Chuveiro Ligado (Modo Verão ☀️)`;
+  };
+  
   return (
     <div style={{ animation: 'fadeIn 0.5s' }}>
       <header style={{ marginBottom: '30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
